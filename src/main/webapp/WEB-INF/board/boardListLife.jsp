@@ -60,8 +60,8 @@
 			<div class="row">
 				<div class="col-2 text-center border border-success h-25">
 					<h5>카테고리</h5>
-					<a href="boardListLife" class="text-decoration-none link-secondary">일상</a><br>
-					<a href="boardList" class="text-decoration-none link-secondary">독서</a>
+					<a href="#" class="text-decoration-none link-secondary">일상</a><br>
+					<a href="#" class="text-decoration-none link-secondary">독서</a>
 				</div>
 				<div class="col-10">
 					<table class="table table-hover">
