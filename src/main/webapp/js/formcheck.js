@@ -1,14 +1,4 @@
 $(function() {
-	$('#summernote').summernote({
-		  height: 300,                 // 에디터 높이
-		  minHeight: null,             // 최소 높이
-		  maxHeight: null,             // 최대 높이
-		  focus: true,                  // 에디터 로딩후 포커스를 맞출지 여부
-		  lang: "ko-KR",					// 한글 설정
-		  placeholder: '최대 2048자까지 쓸 수 있습니다'	//placeholder 설정
-          
-	});
-	
 	$("#writeForm").on("submit", function() {
 		if($("#writer").val().length <= 0) {
 			alert("작성자를 입력해주세요.");
@@ -23,16 +13,6 @@ $(function() {
 		if($("#pass").val().length <= 0) {
 			alert("비밀번호를 입력해주세요.");
 			$("#pass").focus();
-			return false;
-		}
-		if($("#bookTitle").val().length <= 0) {
-			alert("책 제목을 입력해주세요.");
-			$("#bookTitle").focus();
-			return false;
-		}
-		if($("#author").val().length <= 0) {
-			alert("작가를 입력해주세요.");
-			$("#author").focus();
 			return false;
 		}
 		if($("#content").val().length <= 0) {
@@ -69,16 +49,6 @@ $(function() {
 		if($("#pass").val().length <= 0) {
 			alert("비밀번호를 입력해주세요.");
 			$("#pass").focus();
-			return false;
-		}
-		if($("#bookTitle").val().length <= 0) {
-			alert("책 제목을 입력해주세요.");
-			$("#bookTitle").focus();
-			return false;
-		}
-		if($("#author").val().length <= 0) {
-			alert("작가를 입력해주세요.");
-			$("#author").focus();
 			return false;
 		}
 		if($("#content").val().length <= 0) {

@@ -60,8 +60,6 @@ public class UpdateController extends HttpServlet {
 			pass = multi.getParameter("pass");
 			title = multi.getParameter("title");
 			writer = multi.getParameter("writer");
-			bookTitle = multi.getParameter("bookTitle");
-			author = multi.getParameter("author");
 			content = multi.getParameter("content");
 			pageNum = multi.getParameter("pageNum");
 			
@@ -79,8 +77,6 @@ public class UpdateController extends HttpServlet {
 			pass = request.getParameter("pass");
 			title = request.getParameter("title");
 			writer = request.getParameter("writer");
-			bookTitle = request.getParameter("bookTitle");
-			author = request.getParameter("author");
 			content = request.getParameter("content");
 			pageNum = request.getParameter("pageNum");
 		}
@@ -119,8 +115,6 @@ public class UpdateController extends HttpServlet {
 		board.setNo(no);
 		board.setTitle(title);
 		board.setWriter(writer);
-		board.setBookTitle(bookTitle);
-		board.setAuthor(author);
 		board.setPass(pass);
 		board.setContent(content);
 		board.setFile1(fileName);

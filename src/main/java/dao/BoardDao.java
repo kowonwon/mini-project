@@ -31,8 +31,8 @@ public class BoardDao {
 	
 	public ArrayList<Board> boardList(int startRow, int endRow) {
 		String sqlBoardList = "SELECT * FROM (SELECT ROWNUM num, "
-				+ "no, title, writer, book_title, author, reg_date, content, pass, img1, file1 FROM "
-				+ "(SELECT * FROM book_review ORDER BY no DESC)) "
+				+ "no, title, writer, reg_date, content, pass, img1, file1 FROM "
+				+ "(SELECT * FROM review ORDER BY no DESC)) "
 				+ "WHERE num >= ? AND num <= ?";
 		
 		ArrayList<Board> boardList = null;
@@ -53,8 +53,6 @@ public class BoardDao {
 					b.setNo(rs.getInt("no"));
 					b.setTitle(rs.getString("title"));
 					b.setWriter(rs.getString("writer"));
-					b.setBookTitle(rs.getString("book_title"));
-					b.setAuthor(rs.getString("author"));
 					b.setRegDate(rs.getTimestamp("reg_date"));
 					b.setContent(rs.getString("content"));
 					b.setPass(rs.getString("pass"));
@@ -78,7 +76,7 @@ public class BoardDao {
 	}
 	
 	public Board getBoard(int no) {
-		String sqlBoard = "select * from book_review where no=?";
+		String sqlBoard = "select * from review where no=?";
 		Board board = null;
 		
 		try {
@@ -92,8 +90,6 @@ public class BoardDao {
 				board.setNo(rs.getInt("no"));
 				board.setTitle(rs.getString("title"));
 				board.setWriter(rs.getString("writer"));
-				board.setBookTitle(rs.getString("book_title"));
-				board.setAuthor(rs.getString("author"));
 				board.setRegDate(rs.getTimestamp("reg_date"));
 				board.setContent(rs.getString("content"));
 				board.setPass(rs.getString("pass"));
@@ -115,15 +111,13 @@ public class BoardDao {
 	}
 	
 	public void insertBoard(Board board) {
-		String sqlInsert = "insert into book_review values "
+		String sqlInsert = "insert into review values "
 				+ "(products_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlInsert);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getWriter());
-			pstmt.setString(3, board.getBookTitle());
-			pstmt.setString(4, board.getAuthor());
 			pstmt.setString(5, board.getContent());
 			pstmt.setString(6, board.getPass());
 			pstmt.setString(7, board.getImg1());
@@ -143,7 +137,7 @@ public class BoardDao {
 	
 	public boolean isPassCheck(int no, String pass) {
 		boolean isPass = false;
-		String sqlPass = "select pass from book_review where no=?";
+		String sqlPass = "select pass from review where no=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlPass);
@@ -168,8 +162,8 @@ public class BoardDao {
 	public void updateBoard(Board board) {
 		
 		String fileUpdate = board.getFile1() != null ? ", file=?" : "";
-		String sqlUpdate = "update book_review set title=?, writer=?, "
-				+ "book_title=?, author=?, reg_date=sysdate, content=?, "
+		String sqlUpdate = "update review set title=?, writer=?, "
+				+ "reg_date=sysdate, content=?, "
 				+ "img1=?" + fileUpdate + " where no=?";
 		
 		try {
@@ -177,16 +171,14 @@ public class BoardDao {
 			pstmt = conn.prepareStatement(sqlUpdate);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getWriter());
-			pstmt.setString(3, board.getBookTitle());
-			pstmt.setString(4, board.getAuthor());
-			pstmt.setString(5, board.getContent());
-			pstmt.setString(6, board.getImg1());
+			pstmt.setString(3, board.getContent());
+			pstmt.setString(4, board.getImg1());
 			
 			if(board.getFile1() != null) {
-				pstmt.setString(7, board.getFile1());
-				pstmt.setInt(8, board.getNo());
+				pstmt.setString(5, board.getFile1());
+				pstmt.setInt(6, board.getNo());
 			} else {
-				pstmt.setInt(7, board.getNo());
+				pstmt.setInt(5, board.getNo());
 			}
 			
 			pstmt.executeUpdate();
@@ -202,7 +194,7 @@ public class BoardDao {
 	}
 	
 	public void deleteBoard(int no) {
-		String sqlDelete = "delete from book_review where no=?";
+		String sqlDelete = "delete from review where no=?";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlDelete);
@@ -219,7 +211,7 @@ public class BoardDao {
 	}
 	
 	public int getBoardCount() {
-		String sqlCount = "select count(*) from book_review";
+		String sqlCount = "select count(*) from review";
 		int count = 0;
 		
 		try {
@@ -242,7 +234,7 @@ public class BoardDao {
 	}
 	
 	public int getBoardCount(String type, String keyword) {
-		String sqlCount = "select count(*) from book_review where "
+		String sqlCount = "select count(*) from review where "
 				+ type + " Like '%' || ? || '%'";
 		
 		int count = 0;
@@ -270,8 +262,8 @@ public class BoardDao {
 	public ArrayList<Board> searchList(String type,
 			String keyword, int startRow, int endRow) {
 		String sqlSearchList = "SELECT * FROM (SELECT ROWNUM num, no, title, "
-				+ "writer, book_title, author, reg_date, content, pass, img1, file1 from "
-				+ "(select * from book_review where " + type + " like ? "
+				+ "writer, reg_date, content, pass, img1, file1 from "
+				+ "(select * from review where " + type + " like ? "
 				+ "order by no desc)) where num >= ? and num <= ?";
 		
 		ArrayList<Board> boardList = null;
@@ -291,8 +283,6 @@ public class BoardDao {
 					board.setNo(rs.getInt("no"));
 					board.setTitle(rs.getString("title"));
 					board.setWriter(rs.getString("writer"));
-					board.setBookTitle(rs.getString("book_title"));
-					board.setAuthor(rs.getString("author"));
 					board.setContent(rs.getString("content"));
 					board.setRegDate(rs.getTimestamp("reg_date"));
 					board.setPass(rs.getString("pass"));

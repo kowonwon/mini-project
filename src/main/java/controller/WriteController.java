@@ -46,16 +46,12 @@ public class WriteController extends HttpServlet {
 		
 		String title = multi.getParameter("title");		
 		String writer = multi.getParameter("writer");		
-		String bookTitle = multi.getParameter("bookTitle");		
-		String author = multi.getParameter("author");		
 		String pass = multi.getParameter("pass");		
 		String content = multi.getParameter("content");		
 		
 		Board board = new Board();
 		board.setTitle(title);
 		board.setWriter(writer);
-		board.setBookTitle(bookTitle);
-		board.setAuthor(author);
 		board.setPass(pass);
 		board.setContent(content);
 		

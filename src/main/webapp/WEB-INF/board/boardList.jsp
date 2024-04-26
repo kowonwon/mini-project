@@ -12,7 +12,7 @@
 		<script src="js/jquery-3.7.1.min.js"></script>
 		<script src="js/formcheck.js"></script> 
 	</head>
-	<body>
+	<body class="bg-success-subtle">
 		<div class="container">
 			<!-- header -->
 			<%@ include file="../pages/header.jsp" %>
@@ -60,15 +60,18 @@
 				</div>
 			</c:if>
 			<div class="row">
-				<div class="col">
+				<div class="col-2 text-center border border-success h-25">
+					<h5>카테고리</h5>
+					<a href="#" class="text-decoration-none link-secondary">일상</a><br>
+					<a href="#" class="text-decoration-none link-secondary">독서</a>
+				</div>
+				<div class="col-10">
 					<table class="table table-hover">
 						<thead>
-							<tr class="table-success">
+							<tr class="table-warning">
 								<th>no</th>
 								<th>제목</th>
 								<th>작성자</th>
-								<th>책제목</th>
-								<th>작가</th>
 								<th>작성일</th>
 							</tr>
 						</thead>
@@ -82,10 +85,6 @@
 											class="text-decoration-none link-secondary">${b.title}</a></td>
 										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}&type=${type}&keyword=${keyword}"
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}&type=${type}&keyword=${keyword}"
-											class="text-decoration-none link-secondary">${b.bookTitle}</a></td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}&type=${type}&keyword=${keyword}"
-											class="text-decoration-none link-secondary">${b.author}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
 									</tr>
@@ -100,10 +99,6 @@
 											class="text-decoration-none link-secondary">${b.title}</a></td>
 										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}"
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}"
-											class="text-decoration-none link-secondary">${b.bookTitle}</a></td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}"
-											class="text-decoration-none link-secondary">${b.author}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
 									</tr>
@@ -113,14 +108,14 @@
 							<!-- 검색 요청 + 게시 글이 없는 경우 -->
 							<c:if test="${searchOption and empty bList}">
 								<tr>
-									<td colspan="6" class="text-center">검색 요청이지만 게시 글이 존재하지 않습니다.</td>
+									<td colspan="6" class="text-center">게시 글이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
 							
 							<!-- 일반 글 + 게시 글이 없는 경우 -->
 							<c:if test="${not searchOption and empty bList}">
 								<tr>
-									<td colspan="6" class="text-center">검색 요청이 아니며 게시 글이 존재하지 않습니다.</td>
+									<td colspan="6" class="text-center">게시 글이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
 						</tbody>
