@@ -113,14 +113,14 @@
 							<!-- 검색 요청 + 게시 글이 없는 경우 -->
 							<c:if test="${searchOption and empty bList}">
 								<tr>
-									<td colspan="6" class="text-center">게시 글이 존재하지 않습니다.</td>
+									<td colspan="6" class="text-center">검색 요청이지만 게시 글이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
 							
 							<!-- 일반 글 + 게시 글이 없는 경우 -->
 							<c:if test="${not searchOption and empty bList}">
 								<tr>
-									<td colspan="6" class="text-center">게시 글이 존재하지 않습니다.</td>
+									<td colspan="6" class="text-center">검색 요청이 아니며 게시 글이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
 						</tbody>

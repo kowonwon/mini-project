@@ -242,7 +242,6 @@ public class BoardDao {
 	}
 	
 	public int getBoardCount(String type, String keyword) {
-		System.out.println(type + " - " + keyword);
 		String sqlCount = "select count(*) from book_review where "
 				+ type + " Like '%' || ? || '%'";
 		
@@ -287,22 +286,22 @@ public class BoardDao {
 			
 			if(rs.next()) {
 				boardList = new ArrayList<Board>();
-				
 				do {
 					Board board = new Board();
 					board.setNo(rs.getInt("no"));
 					board.setTitle(rs.getString("title"));
 					board.setWriter(rs.getString("writer"));
-					board.setBookTitle(rs.getString("bookTitle"));
+					board.setBookTitle(rs.getString("book_title"));
 					board.setAuthor(rs.getString("author"));
-					board.setRegDate(rs.getTimestamp("reg_date"));
 					board.setContent(rs.getString("content"));
+					board.setRegDate(rs.getTimestamp("reg_date"));
 					board.setPass(rs.getString("pass"));
 					board.setImg1(rs.getString("img1"));
 					board.setFile1(rs.getString("file1"));
 					
 					boardList.add(board);
-				}while(rs.next());
+					
+				} while(rs.next());
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

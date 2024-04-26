@@ -53,8 +53,10 @@ public class BoardListController extends HttpServlet {
 		if(! searchOption) {
 			listCount = dao.getBoardCount();
 			bList = dao.boardList(startRow, endRow);
+		}else {
+			listCount = dao.getBoardCount(type, keyword);
+			bList = dao.searchList(type, keyword, startRow, endRow);
 		}
-		System.out.println("listCount : " + listCount);
 		
 		
 		int pageCount = listCount / PAGE_SIZE
