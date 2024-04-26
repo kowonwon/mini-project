@@ -6,8 +6,6 @@ public class Board {
 	private int no;
 	private String title;
 	private String writer;
-	private String bookTitle;
-	private String author;
 	private Timestamp regDate;
 	private String content;
 	private String pass;
@@ -15,14 +13,12 @@ public class Board {
 	private String file1;
 	
 	public Board() {}
-	public Board(int no, String title, String writer, String bookTitle, String author, Timestamp regDate, String content, String pass, 
+	public Board(int no, String title, String writer, Timestamp regDate, String content, String pass, 
 			String img1, String file1) {
 		super();
 		this.no = no;
 		this.title = title;
 		this.writer = writer;
-		this.bookTitle = bookTitle;
-		this.author = author;
 		this.regDate = regDate;
 		this.content = content;
 		this.pass = pass;
@@ -52,22 +48,6 @@ public class Board {
 
 	public void setWriter(String writer) {
 		this.writer = writer;
-	}
-
-	public String getBookTitle() {
-		return bookTitle;
-	}
-
-	public void setBookTitle(String bookTitle) {
-		this.bookTitle = bookTitle;
-	}
-
-	public String getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(String author) {
-		this.author = author;
 	}
 
 	public Timestamp getRegDate() {

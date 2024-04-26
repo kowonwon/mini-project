@@ -40,12 +40,6 @@
 										<td>${board.writer}</td>
 									</tr>
 									<tr>
-										<th class="table-secondary">책 제목</th>
-										<td>${board.bookTitle}</td>
-										<th>작 가</th>
-										<td>${board.author}</td>
-									</tr>
-									<tr>
 										<th>작성일</th>
 										<td><fmt:formatDate value="${board.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>

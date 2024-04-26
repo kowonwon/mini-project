@@ -38,14 +38,6 @@
 							<label for="title" class="form-label">제 목</label>
 							<input type="text" class="form-control" name="title" id="title">
 						</div>
-						<div class="col-5">
-							<label for="bookTitle" class="form-label">책 제목</label>
-							<input type="text" class="form-control" name="bookTitle" id="bookTitle">
-						</div>
-						<div class="col-5">
-							<label for="author" class="form-label">작가</label>
-							<input type="text" class="form-control" name="author" id="author">
-						</div>
 						<div class="col-10">
 							<label for="content" class="form-label">내 용</label>
 							<textarea class="form-control" name="content" id="content" rows="10"></textarea>
