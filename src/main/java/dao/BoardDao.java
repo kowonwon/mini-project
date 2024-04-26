@@ -112,16 +112,16 @@ public class BoardDao {
 	
 	public void insertBoard(Board board) {
 		String sqlInsert = "insert into review values "
-				+ "(products_seq.nextval, ?, ?, ?, ?, sysdate, ?, ?, ?, ?)";
+				+ "(products_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlInsert);
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getWriter());
-			pstmt.setString(5, board.getContent());
-			pstmt.setString(6, board.getPass());
-			pstmt.setString(7, board.getImg1());
-			pstmt.setString(8, board.getFile1());
+			pstmt.setString(3, board.getContent());
+			pstmt.setString(4, board.getPass());
+			pstmt.setString(5, board.getImg1());
+			pstmt.setString(6, board.getFile1());
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
