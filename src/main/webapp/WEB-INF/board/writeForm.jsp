@@ -9,7 +9,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>글쓰기</title>
 		<link href="bootstrap/bootstrap.min.css" rel="stylesheet" >
-		<link rel="stylesheet" href="summernote/summernote-lite.css">
+		<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
 		<script src="js/jquery-3.7.1.min.js"></script>
 		<script src="js/formcheck.js"></script>
 		<script src="summernote/summernote-lite.js"></script>
@@ -49,10 +49,8 @@
 							<label for="author" class="form-label">작가</label>
 							<input type="text" class="form-control" name="author" id="author">
 						</div>
-						<div class="col-10">
-							<label for="content" class="form-label">내 용</label>
-							<textarea class="form-control" name="content"
-								id="content" rows="10"></textarea>
+						<div class="col-10" id="summernote">
+							작성하시오.
 						</div>
 						<div class="col-10">
 							<label for="file1" class="form-label">파 일</label>
