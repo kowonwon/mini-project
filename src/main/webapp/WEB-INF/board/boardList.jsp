@@ -12,7 +12,7 @@
 		<script src="js/jquery-3.7.1.min.js"></script>
 		<script src="js/formcheck.js"></script> 
 	</head>
-	<body class="bg-success-subtle">
+	<body>
 		<div class="container">
 			<!-- header -->
 			<%@ include file="../pages/header.jsp" %>
@@ -30,7 +30,7 @@
 					<input type="text" name="keyword" class="form-control" id="keyword"/>
 				</div>
 				<div class="col-auto">
-					<input type="submit" value="검 색" class="btn btn-primary"/>
+					<input type="submit" value="검 색" class="btn btn-success"/>
 				</div>
 			</form>
 			<!-- 검색 요청일 경우 -->
@@ -60,7 +60,7 @@
 			<div class="row">
 				<div class="col-2 text-center border border-success h-25">
 					<h5>카테고리</h5>
-					<a href="boardListLife" class="text-decoration-none link-secondary">일상</a><br>
+					<a href="lifeList" class="text-decoration-none link-secondary">일상</a><br>
 					<a href="boardList" class="text-decoration-none link-secondary">독서</a>
 				</div>
 				<div class="col-10">

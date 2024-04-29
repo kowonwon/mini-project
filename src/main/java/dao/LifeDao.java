@@ -12,6 +12,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import vo.Board;
+import vo.BoardLife;
 
 public class LifeDao {
 	private Connection conn;
@@ -29,13 +30,13 @@ public class LifeDao {
 		}
 	}
 	
-	public ArrayList<Board> boardList(int startRow, int endRow) {
+	public ArrayList<BoardLife> boardList(int startRow, int endRow) {
 		String sqlBoardList = "SELECT * FROM (SELECT ROWNUM num, "
 				+ "no, title, writer, reg_date, content, pass, img1, file1 FROM "
 				+ "(SELECT * FROM life ORDER BY no DESC)) "
 				+ "WHERE num >= ? AND num <= ?";
 		
-		ArrayList<Board> boardList = null;
+		ArrayList<BoardLife> boardList = null;
 		
 		try {
 			conn = ds.getConnection();
@@ -46,10 +47,10 @@ public class LifeDao {
 			
 			
 			if(rs.next()) {
-				boardList = new ArrayList<Board>();
+				boardList = new ArrayList<BoardLife>();
 				
 				do {
-					Board b = new Board();
+					BoardLife b = new BoardLife();
 					b.setNo(rs.getInt("no"));
 					b.setTitle(rs.getString("title"));
 					b.setWriter(rs.getString("writer"));
@@ -75,9 +76,9 @@ public class LifeDao {
 		return boardList;
 	}
 	
-	public Board getBoard(int no) {
+	public BoardLife getBoard(int no) {
 		String sqlBoard = "select * from life where no=?";
-		Board board = null;
+		BoardLife board = null;
 		
 		try {
 			conn = ds.getConnection();
@@ -86,7 +87,7 @@ public class LifeDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				board= new Board();
+				board= new BoardLife();
 				board.setNo(rs.getInt("no"));
 				board.setTitle(rs.getString("title"));
 				board.setWriter(rs.getString("writer"));
@@ -110,7 +111,7 @@ public class LifeDao {
 		return board;
 	}
 	
-	public void insertBoard(Board board) {
+	public void insertBoard(BoardLife board) {
 		String sqlInsert = "insert into life values "
 				+ "(products_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
 		try {
@@ -159,7 +160,7 @@ public class LifeDao {
 		return isPass;
 	}
 	
-	public void updateBoard(Board board) {
+	public void updateBoard(BoardLife board) {
 		
 		String fileUpdate = board.getFile1() != null ? ", file=?" : "";
 		String sqlUpdate = "update life set title=?, writer=?, "
@@ -259,14 +260,14 @@ public class LifeDao {
 		return count;
 	}
 	
-	public ArrayList<Board> searchList(String type,
+	public ArrayList<BoardLife> searchList(String type,
 			String keyword, int startRow, int endRow) {
 		String sqlSearchList = "SELECT * FROM (SELECT ROWNUM num, no, title, "
 				+ "writer, reg_date, content, pass, img1, file1 from "
 				+ "(select * from life where " + type + " like ? "
 				+ "order by no desc)) where num >= ? and num <= ?";
 		
-		ArrayList<Board> boardList = null;
+		ArrayList<BoardLife> boardList = null;
 		
 		try {
 			conn = ds.getConnection();
@@ -277,9 +278,9 @@ public class LifeDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				boardList = new ArrayList<Board>();
+				boardList = new ArrayList<BoardLife>();
 				do {
-					Board board = new Board();
+					BoardLife board = new BoardLife();
 					board.setNo(rs.getInt("no"));
 					board.setTitle(rs.getString("title"));
 					board.setWriter(rs.getString("writer"));

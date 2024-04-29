@@ -10,7 +10,7 @@
 		<title>상세보기</title>
 		<link href="bootstrap/bootstrap.min.css" rel="stylesheet" >
 		<script src="js/jquery-3.7.1.min.js"></script>
-		<script src="js/formcheck.js"></script>
+		<script src="js/formcheck2.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -75,7 +75,7 @@
 							<input class="btn btn-warning" type="button" id="update" value="수정하기">
 							&nbsp;&nbsp;<input class="btn btn-danger" type="button" id="delete" value="삭제하기">
 							&nbsp;&nbsp;<input class="btn btn-success" type="button" value="목록보기"
-								onclick="location.href='boardList?pageNum=${pageNum}'"/>
+								onclick="location.href='lifeList?pageNum=${pageNum}'"/>
 						</div>
 					</div>
 				</div>

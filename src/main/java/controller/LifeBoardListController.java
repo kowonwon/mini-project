@@ -11,7 +11,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BoardDao;
+import dao.LifeDao;
 import vo.Board;
+import vo.BoardLife;
 
 @WebServlet("/lifeList")
 public class LifeBoardListController extends HttpServlet {
@@ -42,9 +44,9 @@ public class LifeBoardListController extends HttpServlet {
 		
 		int endRow = startRow + PAGE_SIZE - 1;
 		int listCount = 0;
-		ArrayList<Board> bList = null;
+		ArrayList<BoardLife> bList = null;
 		
-		BoardDao dao = new BoardDao();
+		LifeDao dao = new LifeDao();
 		
 		boolean searchOption = (type == null || type.equals("")
 				|| keyword == null || keyword.equals("")) ? false : true;
@@ -84,7 +86,7 @@ public class LifeBoardListController extends HttpServlet {
 		}
 		
 		RequestDispatcher rd = 
-				request.getRequestDispatcher("/WEB-INF/board/boardList.jsp");
+				request.getRequestDispatcher("/WEB-INF/board/lifeList.jsp");
 		rd.forward(request, response);
 	}
 }
