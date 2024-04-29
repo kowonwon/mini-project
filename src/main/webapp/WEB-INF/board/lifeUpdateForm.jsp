@@ -10,7 +10,7 @@
 		<title>글 수정하기</title>
 		<link href="bootstrap/bootstrap.min.css" rel="stylesheet" >
 		<script src="js/jquery-3.7.1.min.js"></script>
-		<script src="js/formcheck.js"></script>
+		<script src="js/formcheck2.js"></script>
 	</head>
 	<body>
 		<div class="container">
@@ -24,7 +24,7 @@
 							<h2 class="fs-3 fw-bold">글 수정하기</h2>
 						</div>
 					</div>
-					<form name="updateForm" action="updateProcess" id="updateForm"
+					<form name="updateForm" action="lifeUpdateProcess" id="updateForm"
 						class="row g-3 border-primary justify-content-center" method="post"
 							${not empty board.file1 ? "" : "enctype='multipart/form-data'"}>
 						<input type="hidden" name="no" value="${board.no}">
@@ -55,9 +55,9 @@
 							</div>
 						</c:if>
 						<div class="col-8 text-center mt-5">
-							<input type="submit" value="수정하기" class="btn btn-succees"/>
+							<input type="submit" value="수정하기" class="btn btn-success"/>
 							&nbsp;&nbsp;<input type="button" value="목록보기"
-								onclick="location.href='boardList?pageNum=${pageNum}'" class="btn btn-success"/>
+								onclick="location.href='lifeList?pageNum=${pageNum}'" class="btn btn-success"/>
 						</div>
 					</form>
 				</div>

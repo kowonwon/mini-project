@@ -30,7 +30,7 @@ $(function() {
 		}
 		
 		$("#rPass").val(pass);
-		$("#checkForm").attr("action", "updateForm");
+		$("#checkForm").attr("action", "lifeUpdateForm");
 		$("#checkForm").attr("method", "post");
 		$("#checkForm").submit();
 	})
@@ -66,7 +66,7 @@ $(function() {
 		}
 		
 		$("#rPass").val(pass);
-		$("#checkForm").attr("action", "deleteProcess");
+		$("#checkForm").attr("action", "lifeDeleteProcess");
 		$("#checkForm").attr("method", "post");
 		$("#checkForm").submit();
 	})
@@ -78,6 +78,6 @@ $(function() {
 			return false;
 		}		
 		$(this).attr("method", "post");
-		$(this).attr("action", "boardList");
+		$(this).attr("action", "lifeList");
 	});
 })

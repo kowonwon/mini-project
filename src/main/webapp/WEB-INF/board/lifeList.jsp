@@ -10,9 +10,9 @@
 		<title>게시 글 리스트</title>
 		<link href="bootstrap/bootstrap.min.css" rel="stylesheet">
 		<script src="js/jquery-3.7.1.min.js"></script>
-		<script src="js/formcheck.js"></script> 
+		<script src="js/formcheck2.js"></script> 
 	</head>
-	<body class="bg-success-subtle">
+	<body>
 		<div class="container">
 			<!-- header -->
 			<%@ include file="../pages/header.jsp" %>
@@ -30,7 +30,7 @@
 					<input type="text" name="keyword" class="form-control" id="keyword"/>
 				</div>
 				<div class="col-auto">
-					<input type="submit" value="검 색" class="btn btn-primary"/>
+					<input type="submit" value="검 색" class="btn btn-success"/>
 				</div>
 			</form>
 			<!-- 검색 요청일 경우 -->
@@ -42,10 +42,10 @@
 				</div>
 				<div class="row my-3">
 					<div class="col">
-						<a href="boardList" class="btn btn-outline-success">리스트</a>
+						<a href="lifeList" class="btn btn-outline-success">리스트</a>
 					</div>
 					<div class="col text-end">
-						<a href="writeForm" class="btn btn-outline-success">글쓰기</a>
+						<a href="lifeWriteForm" class="btn btn-outline-success">글쓰기</a>
 					</div>
 				</div>
 			</c:if>
@@ -53,15 +53,15 @@
 			<c:if test="${not searchOption}">
 				<div class="row text-end">
 					<div class="col">
-						<a href="writeForm" class="btn btn-outline-success">글쓰기</a>
+						<a href="lifeWriteForm" class="btn btn-outline-success">글쓰기</a>
 					</div>
 				</div>
 			</c:if>
 			<div class="row">
 				<div class="col-2 text-center border border-success h-25">
 					<h5>카테고리</h5>
-					<a href="#" class="text-decoration-none link-secondary">일상</a><br>
-					<a href="#" class="text-decoration-none link-secondary">독서</a>
+					<a href="lifeList" class="text-decoration-none link-secondary">일상</a><br>
+					<a href="boardList" class="text-decoration-none link-secondary">독서</a>
 				</div>
 				<div class="col-10">
 					<table class="table table-hover">
@@ -79,9 +79,9 @@
 								<c:forEach var="b" items="${bList}">
 									<tr>
 										<td>${b.no}</td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}&type=${type}&keyword=${keyword}"
+										<td><a href="lifeBoardDetail?no=${b.no}&pageNum=${currentPage}&type=${type}&keyword=${keyword}"
 											class="text-decoration-none link-secondary">${b.title}</a></td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}&type=${type}&keyword=${keyword}"
+										<td><a href="lifeBoardDetail?no=${b.no}&pageNum=${currentPage}&type=${type}&keyword=${keyword}"
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
@@ -93,9 +93,9 @@
 								<c:forEach var="b" items="${bList}">
 									<tr>
 										<td>${b.no}</td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}"
+										<td><a href="lifeBoardDetail?no=${b.no}&pageNum=${currentPage}"
 											class="text-decoration-none link-secondary">${b.title}</a></td>
-										<td><a href="boardDetail?no=${b.no}&pageNum=${currentPage}"
+										<td><a href="lifeBoardDetail?no=${b.no}&pageNum=${currentPage}"
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
@@ -129,7 +129,7 @@
 							<ul class="pagination justify-content-center">
 								<c:if test="${startPage > pageGroup}">
 									<li class="page-item">
-										<a class="page-link" href="boardList?pageNum=${startPage - pageGroup}&type=${type}&keyword=${keyword}">Pre</a>
+										<a class="page-link" href="lifeList?pageNum=${startPage - pageGroup}&type=${type}&keyword=${keyword}">Pre</a>
 									</li>
 								</c:if>
 								<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -140,13 +140,13 @@
 									</c:if>
 									<c:if test="${i != currentPage}">
 										<li class="page-item">
-											<a class="page-link" href="boardList?pageNum=${i}&type=${type}&keyword=${keyword}">${i}</a>
+											<a class="page-link" href="lifeList?pageNum=${i}&type=${type}&keyword=${keyword}">${i}</a>
 										</li>
 									</c:if>
 								</c:forEach>
 								<c:if test="${endPage < pageCount}">
 									<li class="page-item">
-										<a class="page-link" href="boardList?pageNum=${startPage + pageGroup}&type=${type}&keyword=${keyword}">Next</a>
+										<a class="page-link" href="lifeList?pageNum=${startPage + pageGroup}&type=${type}&keyword=${keyword}">Next</a>
 									</li>
 								</c:if>
 							</ul>
@@ -163,7 +163,7 @@
 							<ul class="pagination justify-content-center">
 								<c:if test="${startPage > pageGroup}">
 									<li class="page-item">
-										<a class="page-link" href="boardList?pageNum=${startPage - pageGroup}">Pre</a>
+										<a class="page-link" href="lifeList?pageNum=${startPage - pageGroup}">Pre</a>
 									</li>
 								</c:if>
 								<c:forEach var="i" begin="${startPage}" end="${endPage}">
@@ -174,13 +174,13 @@
 									</c:if>
 									<c:if test="${i != currentPage}">
 										<li class="page-item">
-											<a class="page-link" href="boardList?pageNum=${i}">${i}</a>
+											<a class="page-link" href="lifeList?pageNum=${i}">${i}</a>
 										</li>
 									</c:if>
 								</c:forEach>
 								<c:if test="${endPage < pageCount}">
 									<li class="page-item">
-										<a class="page-link" href="boardList?pageNum=${startPage + pageGroup}">Next</a>
+										<a class="page-link" href="lifeList?pageNum=${startPage + pageGroup}">Next</a>
 									</li>
 								</c:if>
 							</ul>
