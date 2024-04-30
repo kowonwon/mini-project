@@ -12,12 +12,51 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import vo.Board;
+import vo.Comment;
 
 public class BoardDao {
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
 	private static DataSource ds;
+	
+public ArrayList<Comment> commentList(int no) {
+		
+		String sqlCommentList = "SELECT * FROM comments where no=? ORDER BY cNo";
+		ArrayList<Comment> commentList = null;
+		
+		try {			
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sqlCommentList);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			
+			commentList = new ArrayList<Comment>();
+			
+			while(rs.next()) {
+				Comment c = new Comment();
+				
+				c.setcNo(rs.getInt("cNo"));
+				c.setNo(rs.getInt("no"));
+				c.setWriter(rs.getString("writer"));
+				c.setContent(rs.getString("content"));
+				c.setPass(rs.getString("pass"));
+				c.setRegDate(rs.getTimestamp("reg_date"));
+				
+				commentList.add(c);
+			}			
+		} catch(SQLException e) {
+			e.printStackTrace();
+			
+		} finally {
+			try {
+				if(rs != null) rs.close();
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(SQLException e) {}
+		}
+		return commentList;
+	}
 	
 	public BoardDao() {
 		try {

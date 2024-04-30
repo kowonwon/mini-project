@@ -74,32 +74,28 @@
 					<div class="row">
 						<div class="col">
 							<h5>댓 글</h5>
-							<table class="table table-hover">
-								<tbody>
-									<c:if test="${not empty cList}">
-										<c:forEach var="c" items="${cList}">
-											<tr>
-												<td>${c.no}. ${c.writer}</td>
-												<td>${c.content}</td>
-												<td><fmt:formatDate value="${c.regDate}" pattern="yy-MM-dd"/></td>
-											</tr>
-										</c:forEach>
-									</c:if>
-									<c:if test="${empty cList}">
-										<tr>
-											<td class="text-center">댓글이 존재하지 않습니다.</td>
-										</tr>
-									</c:if>
-								</tbody>
-							</table>
+							<div class="border">
+								<c:if test="${not empty cList}">
+									<c:forEach var="c" items="${cList}">
+										<pre>${c.cNo}. 작성자: ${c.writer}
+${c.content} (<fmt:formatDate value="${c.regDate}" pattern="yy-MM-dd"/>)
+										</pre>
+									</c:forEach>
+								</c:if>
+								<c:if test="${empty cList}">
+										<p class="text-center">댓글이 존재하지 않습니다.</p>
+								</c:if>
+							</div>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col">
 							<p>작성하기</p>
 							<form action="commentProcess" id="commentForm" method="post">
-								<label for="NicKName" class="form-label">이 름</label>
-								<input type="text" class="form-control w-25" name="nickName" id="nickName">
+								<label for="nameC" class="form-label">이 름</label>
+								<input type="text" class="form-control w-25" name="nameC" id="nameC">
+								<label for="passC" class="form-label">비밀번호</label>
+								<input type="password" class="form-control w-25" name="passC" id="passC">
 								<label for="comment" class="form-label">내 용</label>
 								<textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
 								<input type="submit" value="등록하기" class="btn btn-outline-success"/>

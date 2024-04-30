@@ -30,14 +30,15 @@ public class CommentDao {
 		}
 	}
 	
-	public ArrayList<Comment> commentList() {
+	public ArrayList<Comment> commentList(int no) {
 		
-		String sqlCommentList = "SELECT * FROM comments ORDER BY cNo DESC";
+		String sqlCommentList = "SELECT * FROM comments where no=? ORDER BY cNo";
 		ArrayList<Comment> commentList = null;
 		
 		try {			
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlCommentList);
+			pstmt.setInt(1, no);
 			rs = pstmt.executeQuery();
 			
 			commentList = new ArrayList<Comment>();
@@ -46,9 +47,9 @@ public class CommentDao {
 				Comment c = new Comment();
 				
 				c.setcNo(rs.getInt("sNo"));
-				c.setNo(rs.getInt("No"));
+				c.setNo(rs.getInt("no"));
 				c.setWriter(rs.getString("writer"));
-				c.setContent(rs.getString("content"));				
+				c.setContent(rs.getString("content"));
 				c.setPass(rs.getString("pass"));
 				c.setRegDate(rs.getTimestamp("reg_date"));
 				
@@ -67,9 +68,9 @@ public class CommentDao {
 		return commentList;
 	}
 	
-	public Board getBoard(int no) {
-		String sqlBoard = "select * from review where no=?";
-		Board board = null;
+	public Comment getComment(int no) {
+		String sqlBoard = "select * from comments where no=?";
+		Comment comment = null;
 		
 		try {
 			conn = ds.getConnection();
@@ -78,14 +79,13 @@ public class CommentDao {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				board= new Board();
-				board.setNo(rs.getInt("no"));
-				board.setTitle(rs.getString("title"));
-				board.setWriter(rs.getString("writer"));
-				board.setRegDate(rs.getTimestamp("reg_date"));
-				board.setContent(rs.getString("content"));
-				board.setPass(rs.getString("pass"));
-				board.setFile1(rs.getString("file1"));
+				comment= new Comment();
+				comment.setNo(rs.getInt("sNo"));
+				comment.setNo(rs.getInt("no"));
+				comment.setWriter(rs.getString("writer"));
+				comment.setContent(rs.getString("content"));
+				comment.setPass(rs.getString("pass"));
+				comment.setRegDate(rs.getTimestamp("reg_date"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -98,7 +98,7 @@ public class CommentDao {
 				e.printStackTrace();
 			}
 		}
-		return board;
+		return comment;
 	}
 	
 	public void insertBoard(Board board) {

@@ -38,8 +38,8 @@ public class BoardDetailController extends HttpServlet{
 		
 		// comment
 		ArrayList<Comment> cList = null;
-		CommentDao cDao = new CommentDao();
-		cList = cDao.commentList();
+		cList = dao.commentList(Integer.parseInt(no));
+		
 		request.setAttribute("cList", cList);
 		
 		request.setAttribute("board", board);
