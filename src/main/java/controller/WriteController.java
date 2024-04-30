@@ -59,6 +59,7 @@ public class WriteController extends HttpServlet {
 		System.out.println("업로드 된 파일명 : " + fileName);
 		System.out.println("원본 파일명 : " + multi.getOriginalFileName("file1"));
 		
+		
 		board.setFile1(fileName);
 		
 		if(board.getFile1() == null) {

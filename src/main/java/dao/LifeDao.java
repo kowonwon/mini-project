@@ -113,7 +113,7 @@ public class LifeDao {
 	
 	public void insertBoard(BoardLife board) {
 		String sqlInsert = "insert into life values "
-				+ "(products_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
+				+ "(l_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlInsert);

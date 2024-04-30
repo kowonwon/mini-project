@@ -59,9 +59,8 @@
 			</c:if>
 			<div class="row">
 				<div class="col-2 text-center border border-success h-25">
-					<h5>카테고리</h5>
-					<a href="lifeList" class="text-decoration-none link-secondary">일상</a><br>
-					<a href="boardList" class="text-decoration-none link-secondary">독서</a>
+					<a href="boardList" class="text-decoration-none link-secondary">독서</a><br>
+					<a href="lifeList" class="text-decoration-none link-secondary">일상</a>
 				</div>
 				<div class="col-10">
 					<table class="table table-hover">
@@ -71,6 +70,7 @@
 								<th>제목</th>
 								<th>작성자</th>
 								<th>작성일</th>
+								<th>이미지</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -85,6 +85,8 @@
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
+										<td><img src="upload/${b.file1}" width="100px">
+										</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -99,6 +101,8 @@
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
+										<td><img src="upload/${b.file1}" width="100px">
+										</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -106,14 +110,14 @@
 							<!-- 검색 요청 + 게시 글이 없는 경우 -->
 							<c:if test="${searchOption and empty bList}">
 								<tr>
-									<td colspan="6" class="text-center">게시 글이 존재하지 않습니다.</td>
+									<td colspan="7" class="text-center">게시 글이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
 							
 							<!-- 일반 글 + 게시 글이 없는 경우 -->
 							<c:if test="${not searchOption and empty bList}">
 								<tr>
-									<td colspan="6" class="text-center">게시 글이 존재하지 않습니다.</td>
+									<td colspan="7" class="text-center">게시 글이 존재하지 않습니다.</td>
 								</tr>
 							</c:if>
 						</tbody>

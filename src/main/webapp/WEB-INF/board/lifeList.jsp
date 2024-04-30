@@ -59,9 +59,8 @@
 			</c:if>
 			<div class="row">
 				<div class="col-2 text-center border border-success h-25">
-					<h5>카테고리</h5>
-					<a href="lifeList" class="text-decoration-none link-secondary">일상</a><br>
-					<a href="boardList" class="text-decoration-none link-secondary">독서</a>
+					<a href="boardList" class="text-decoration-none link-secondary">독서</a><br>
+					<a href="lifeList" class="text-decoration-none link-secondary">일상</a>
 				</div>
 				<div class="col-10">
 					<table class="table table-hover">
@@ -85,6 +84,7 @@
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
+										<td><img src="upload/${b.file1}" width="100px"></td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -99,6 +99,7 @@
 											class="text-decoration-none link-secondary">${b.writer}</a></td>
 										<td><fmt:formatDate value="${b.regDate}"
 											pattern="yyyy-MM-dd HH:mm:ss"/></td>
+										<td><img src="upload/${b.file1}" width="100px"></td>
 									</tr>
 								</c:forEach>
 							</c:if>

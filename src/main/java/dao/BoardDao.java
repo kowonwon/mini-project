@@ -112,7 +112,7 @@ public class BoardDao {
 	
 	public void insertBoard(Board board) {
 		String sqlInsert = "insert into review values "
-				+ "(products_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
+				+ "(b_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlInsert);

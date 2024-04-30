@@ -16,7 +16,7 @@ import vo.Board;
 @WebServlet("/boardList")
 public class BoardListController extends HttpServlet {
 	
-	private static final int PAGE_SIZE = 10;
+	private static final int PAGE_SIZE = 5;
 	private static final int PAGE_GROUP = 10;
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

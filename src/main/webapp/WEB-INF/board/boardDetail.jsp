@@ -51,19 +51,12 @@
 										</td>
 									</tr>
 									<tr>
-										<th>파 일</th>
+										<th>내용</th>
 										<td colspan="3">
-											<c:if test="${empty board.file1}">
-												첨부파일 없음
-											</c:if>
 											<c:if test="${not empty board.file1}">
-												<a href="upload/${board.file1}">파일 다운로드</a>
+												<img src="upload/${board.file1}" width="500px">
+												<pre>${board.content}</pre>
 											</c:if>
-										</td>
-									</tr>
-									<tr>
-										<td colspan="4">
-											<pre>${board.content}</pre>
 										</td>
 									</tr>
 								</tbody>
@@ -72,9 +65,9 @@
 					</div>
 					<div class="row my-3">
 						<div class="col text-center">
-							<input class="btn btn-warning" type="button" id="update" value="수정하기">
-							&nbsp;&nbsp;<input class="btn btn-danger" type="button" id="delete" value="삭제하기">
-							&nbsp;&nbsp;<input class="btn btn-success" type="button" value="목록보기"
+							<input class="btn btn-outline-success" type="button" id="update" value="수정하기">
+							&nbsp;&nbsp;<input class="btn btn-outline-danger" type="button" id="delete" value="삭제하기">
+							&nbsp;&nbsp;<input class="btn btn-outline-success" type="button" value="목록보기"
 								onclick="location.href='boardList?pageNum=${pageNum}'"/>
 						</div>
 					</div>
