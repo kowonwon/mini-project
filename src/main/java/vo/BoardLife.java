@@ -9,12 +9,11 @@ public class BoardLife {
 	private Timestamp regDate;
 	private String content;
 	private String pass;
-	private String img1;
 	private String file1;
 	
 	public BoardLife() {}
 	public BoardLife(int no, String title, String writer, Timestamp regDate, String content, String pass, 
-			String img1, String file1) {
+			String file1) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -22,7 +21,6 @@ public class BoardLife {
 		this.regDate = regDate;
 		this.content = content;
 		this.pass = pass;
-		this.img1 = img1;
 		this.file1 = file1;
 	}
 
@@ -72,14 +70,6 @@ public class BoardLife {
 	
 	public void setPass(String pass) {
 		this.pass = pass;
-	}
-
-	public String getImg1() {
-		return img1;
-	}
-
-	public void setImg1(String img1) {
-		this.img1 = img1;
 	}
 
 	public String getFile1() {

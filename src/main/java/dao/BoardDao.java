@@ -31,7 +31,7 @@ public class BoardDao {
 	
 	public ArrayList<Board> boardList(int startRow, int endRow) {
 		String sqlBoardList = "SELECT * FROM (SELECT ROWNUM num, "
-				+ "no, title, writer, reg_date, content, pass, img1, file1 FROM "
+				+ "no, title, writer, reg_date, content, pass, file1 FROM "
 				+ "(SELECT * FROM review ORDER BY no DESC)) "
 				+ "WHERE num >= ? AND num <= ?";
 		
@@ -56,7 +56,6 @@ public class BoardDao {
 					b.setRegDate(rs.getTimestamp("reg_date"));
 					b.setContent(rs.getString("content"));
 					b.setPass(rs.getString("pass"));
-					b.setImg1(rs.getString("img1"));
 					b.setFile1(rs.getString("file1"));
 					
 					boardList.add(b);
@@ -93,7 +92,6 @@ public class BoardDao {
 				board.setRegDate(rs.getTimestamp("reg_date"));
 				board.setContent(rs.getString("content"));
 				board.setPass(rs.getString("pass"));
-				board.setImg1(rs.getString("img1"));
 				board.setFile1(rs.getString("file1"));
 			}
 		}catch(SQLException e) {
@@ -112,7 +110,7 @@ public class BoardDao {
 	
 	public void insertBoard(Board board) {
 		String sqlInsert = "insert into review values "
-				+ "(b_seq.nextval, ?, ?, sysdate, ?, ?, ?, ?)";
+				+ "(b_seq.nextval, ?, ?, sysdate, ?, ?, ?)";
 		try {
 			conn = ds.getConnection();
 			pstmt = conn.prepareStatement(sqlInsert);
@@ -120,8 +118,7 @@ public class BoardDao {
 			pstmt.setString(2, board.getWriter());
 			pstmt.setString(3, board.getContent());
 			pstmt.setString(4, board.getPass());
-			pstmt.setString(5, board.getImg1());
-			pstmt.setString(6, board.getFile1());
+			pstmt.setString(5, board.getFile1());
 			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -163,8 +160,8 @@ public class BoardDao {
 		
 		String fileUpdate = board.getFile1() != null ? ", file=?" : "";
 		String sqlUpdate = "update review set title=?, writer=?, "
-				+ "reg_date=sysdate, content=?, "
-				+ "img1=?" + fileUpdate + " where no=?";
+				+ "reg_date=sysdate, content=?"
+				+ fileUpdate + " where no=?";
 		
 		try {
 			conn = ds.getConnection();
@@ -172,13 +169,12 @@ public class BoardDao {
 			pstmt.setString(1, board.getTitle());
 			pstmt.setString(2, board.getWriter());
 			pstmt.setString(3, board.getContent());
-			pstmt.setString(4, board.getImg1());
 			
 			if(board.getFile1() != null) {
-				pstmt.setString(5, board.getFile1());
-				pstmt.setInt(6, board.getNo());
-			} else {
+				pstmt.setString(4, board.getFile1());
 				pstmt.setInt(5, board.getNo());
+			} else {
+				pstmt.setInt(4, board.getNo());
 			}
 			
 			pstmt.executeUpdate();
@@ -262,7 +258,7 @@ public class BoardDao {
 	public ArrayList<Board> searchList(String type,
 			String keyword, int startRow, int endRow) {
 		String sqlSearchList = "SELECT * FROM (SELECT ROWNUM num, no, title, "
-				+ "writer, reg_date, content, pass, img1, file1 from "
+				+ "writer, reg_date, content, pass, file1 from "
 				+ "(select * from review where " + type + " like ? "
 				+ "order by no desc)) where num >= ? and num <= ?";
 		
@@ -286,7 +282,6 @@ public class BoardDao {
 					board.setContent(rs.getString("content"));
 					board.setRegDate(rs.getTimestamp("reg_date"));
 					board.setPass(rs.getString("pass"));
-					board.setImg1(rs.getString("img1"));
 					board.setFile1(rs.getString("file1"));
 					
 					boardList.add(board);

@@ -43,7 +43,6 @@ public class LifeUpdateController extends HttpServlet {
 		System.out.println("contentType : " + contentType);
 		
 		String pass = null, title = null, writer = null, content = null,
-				bookTitle = null, author = null,
 				sNo = null, pageNum = null, fileName = null;
 		int no = 0;
 		
