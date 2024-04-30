@@ -57,6 +57,29 @@ public ArrayList<Comment> commentList(int no) {
 		}
 		return commentList;
 	}
+
+	public void insertComment(Comment comment) {
+	String sqlInsert = "insert into comments values "
+			+ "(c_seq.nextval, ?, ?, ?, ?, sysdate)";
+	try {
+		conn = ds.getConnection();
+		pstmt = conn.prepareStatement(sqlInsert);
+		pstmt.setInt(1, comment.getNo());
+		pstmt.setString(2, comment.getWriter());
+		pstmt.setString(3, comment.getContent());
+		pstmt.setString(4, comment.getPass());
+		pstmt.executeUpdate();
+	}catch(SQLException e) {
+		e.printStackTrace();
+	}finally {
+		try {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+}
 	
 	public BoardDao() {
 		try {
