@@ -43,13 +43,13 @@
 							<textarea class="form-control" name="content" id="content" rows="10"></textarea>
 						</div>
 						<div class="col-10">
-							<label for="file1" class="form-label">파 일</label>
+							<label for="file1" class="form-label">이미지</label>
 							<input type="file" class="form-control" name="file1" id="file1">
 						</div>
 						<div class="col-8 text-center mt-5">
-							<input type="submit" value="등록하기" class="btn btn-primary"/>
+							<input type="submit" value="등록하기" class="btn btn-success"/>
 							&nbsp;&nbsp;<input type="button" value="목록보기"
-								onclick="location.href='boardList'" class="btn btn-primary"/>
+								onclick="location.href='boardList'" class="btn btn-success"/>
 						</div>
 					</form>
 				</div>

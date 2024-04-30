@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BoardDao;
+import dao.CommentDao;
 import vo.Board;
+import vo.Comment;
 
 @WebServlet("/boardDetail")
 public class BoardDetailController extends HttpServlet{
@@ -32,6 +35,12 @@ public class BoardDetailController extends HttpServlet{
 		
 		BoardDao dao = new BoardDao();
 		Board board = dao.getBoard(Integer.valueOf(no));
+		
+		// comment
+		ArrayList<Comment> cList = null;
+		CommentDao cDao = new CommentDao();
+		cList = cDao.commentList();
+		request.setAttribute("cList", cList);
 		
 		request.setAttribute("board", board);
 		request.setAttribute("pageNum", pageNum);
