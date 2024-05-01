@@ -98,6 +98,9 @@ ${c.content}
 								<input type="password" class="form-control w-25" name="passC" id="passC">
 								<label for="comment" class="form-label">내 용</label>
 								<textarea class="form-control" name="comment" id="comment" rows="3"></textarea>
+								<input type="hidden" name="no" id="no" value="${board.no}">
+								<input type="hidden" name="pass" id="rPass">
+								<input type="hidden" name="pageNum" value="${pageNum}">
 								<input type="submit" value="등록하기" class="btn btn-outline-success"/>
 							</form>
 						</div>

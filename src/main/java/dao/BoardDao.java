@@ -66,6 +66,7 @@ public ArrayList<Comment> commentList(int no) {
 		pstmt = conn.prepareStatement(sqlInsert);
 		pstmt.setInt(1, comment.getNo());
 		pstmt.setString(2, comment.getWriter());
+		System.out.println("writer : "+comment.getWriter());
 		pstmt.setString(3, comment.getContent());
 		pstmt.setString(4, comment.getPass());
 		pstmt.executeUpdate();

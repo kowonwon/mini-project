@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.BoardDao;
-import dao.CommentDao;
 import vo.Board;
 import vo.Comment;
 
@@ -41,7 +40,6 @@ public class BoardDetailController extends HttpServlet{
 		cList = dao.commentList(Integer.parseInt(no));
 		
 		request.setAttribute("cList", cList);
-		
 		request.setAttribute("board", board);
 		request.setAttribute("pageNum", pageNum);
 		

@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row text-center my-5">
 	<div class="col">
-		<h1 class="text-start">독서 블로그</h1>
+		<h1 class="text-start"><a href="http://192.168.0.8:8080/blog/main" class="text-decoration-none link-dark">독서 블로그</a></h1>
 	</div>
 	<div class="col">
 		<img src="img/book.jpg" width="500px">
