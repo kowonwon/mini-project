@@ -8,7 +8,8 @@
 	</head>
 	<body>
 		<form>
-			
+			<label for="id"></label>
+			<input type="text" class="form-control" name="id">
 		</form>
 	</body>
 </html>
