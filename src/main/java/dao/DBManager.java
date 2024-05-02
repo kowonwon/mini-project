@@ -1,5 +1,8 @@
 package dao;
 
+import java.sql.Connection;
+import java.sql.SQLException;
+
 import javax.naming.Context;
 
 public class DBManager {
@@ -19,9 +22,17 @@ public class DBManager {
 	
 	public static Connection getConnection() {
 		try {
-			CONN = DS.getConnection() {
-				
-			}
+			CONN = DS.getConnection();
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
+		return CONN;
+	}
+	
+	public static void close(Connection conn, PreparedStatement pstmt) {
+		try {
+			if(pstmt != null) pstmt.close();
+			if(conn != null) conn.close();
+		} catch(SQLException e) {e.printStackTrace();}
 	}
 }
